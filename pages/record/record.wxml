@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="tabs">
+    <view 
+      class="tab-item {{currentType === 'all' ? 'active' : ''}}" bindtap="switchTab" data-type="all">全部</view>
+    <view 
+      class="tab-item {{currentType === 'chat' ? 'active' : ''}}" bindtap="switchTab" data-type="chat">AI咨询</view>
+    <view 
+      class="tab-item {{currentType === 'document' ? 'active' : ''}}" bindtap="switchTab" data-type="document">法律文书</view>
+    <view 
+      class="tab-item {{currentType === 'contract' ? 'active' : ''}}" bindtap="switchTab" data-type="contract">合同审查</view>
+  </view>
+
+  <view class="empty-state" wx:if="{{recordList.length === 0}}">
+    <view class="empty-icon">📭</view>
+    <view class="empty-text">暂无相关记录</view>
+  </view>
+
+  <view class="record-list" wx:else>
+    <view class="record-item" wx:for="{{recordList}}" wx:key="id" bindtap="viewRecord" data-item="{{item}}">
+      <view class="record-icon {{item.type}}">
+        <text>{{item.icon}}</text>
+      </view>
+      <view class="record-content">
+        <view class="record-title">{{item.title}}</view>
+        <view class="record-desc">{{item.desc}}</view>
+        <view class="record-time">{{item.time}}</view>
+      </view>
+      <view class="record-arrow">›</view>
+    </view>
+  </view>
+</view>

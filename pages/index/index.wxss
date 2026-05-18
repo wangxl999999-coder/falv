@@ -1,0 +1,253 @@
+.container {
+  padding: 0;
+}
+
+.header {
+  margin-bottom: 20rpx;
+}
+
+.banner {
+  position: relative;
+  height: 320rpx;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-text {
+  position: absolute;
+  left: 40rpx;
+  bottom: 60rpx;
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.banner-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.quick-actions {
+  padding: 30rpx;
+  background: #fff;
+  margin: -30rpx 20rpx 20rpx;
+  border-radius: 16rpx;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-bottom: 16rpx;
+}
+
+.action-icon.ai-chat {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.action-icon.document {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.action-icon.contract {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.action-icon.case {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.action-text {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.section {
+  background: #fff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #1E88E5;
+}
+
+.document-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.document-item:last-child {
+  border-bottom: none;
+}
+
+.doc-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f0f7ff;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  margin-right: 24rpx;
+}
+
+.doc-info {
+  flex: 1;
+}
+
+.doc-name {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.doc-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.doc-arrow {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.lawyer-scroll {
+  white-space: nowrap;
+}
+
+.lawyer-list {
+  display: inline-flex;
+}
+
+.lawyer-card {
+  width: 200rpx;
+  margin-right: 30rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lawyer-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-bottom: 16rpx;
+  background: #f5f5f5;
+}
+
+.lawyer-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.lawyer-title {
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 6rpx;
+}
+
+.lawyer-specialty {
+  font-size: 20rpx;
+  color: #1E88E5;
+  background: #e3f2fd;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-image {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+  background: #f5f5f5;
+}
+
+.news-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-title {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.news-time {
+  font-size: 22rpx;
+  color: #999;
+}

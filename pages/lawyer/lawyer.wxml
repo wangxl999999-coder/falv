@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="search-bar">
+    <view class="search-input" bindtap="focusSearch">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索律师姓名或专业领域</text>
+    </view>
+  </view>
+
+  <view class="filter-section">
+    <scroll-view class="filter-scroll" scroll-x="true" show-scrollbar="false">
+      <view class="filter-list">
+        <view 
+          class="filter-item {{selectedSpecialty === '' ? 'active' : ''}}"
+          bindtap="selectSpecialty"
+          data-value=""
+        >全部</view>
+        <view 
+          class="filter-item {{selectedSpecialty === item.value ? 'active' : ''}}"
+          wx:for="{{specialties}}" 
+          wx:key="value"
+          bindtap="selectSpecialty"
+          data-value="{{item.value}}"
+        >{{item.label}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="lawyer-list">
+    <view class="lawyer-card" wx:for="{{lawyerList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="lawyer-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+      <view class="lawyer-info">
+        <view class="lawyer-header">
+          <view class="lawyer-name">{{item.name}}</view>
+          <view class="lawyer-title">{{item.title}}</view>
+        </view>
+        <view class="lawyer-tags">
+          <view class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-index="tagIndex">{{item}}</view>
+        </view>
+        <view class="lawyer-stats">
+          <view class="stat-item">
+            <view class="stat-value">{{item.caseCount}}</view>
+            <view class="stat-label">案件数</view>
+          </view>
+          <view class="stat-item">
+            <view class="stat-value">{{item.winRate}}%</view>
+            <view class="stat-label">胜诉率</view>
+          </view>
+          <view class="stat-item">
+            <view class="stat-value">{{item.experience}}年</view>
+            <view class="stat-label">执业经验</view>
+          </view>
+        </view>
+        <view class="lawyer-footer">
+          <view class="price">
+            <text class="price-label">咨询费</text>
+            <text class="price-value">¥{{item.price}}</text>
+            <text class="price-unit">/30分钟</text>
+          </view>
+          <view class="consult-btn" bindtap="quickConsult" catchtap="quickConsult" data-id="{{item.id}}">
+            立即咨询
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

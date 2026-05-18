@@ -1,0 +1,137 @@
+<view class="container">
+  <view class="search-section" wx:if="{{currentStep === 'search'}}">
+    <view class="section-title">智能类案检索</view>
+    <view class="section-desc">AI智能分析案情，匹配相似案例，提供判决参考</view>
+
+    <view class="input-area">
+      <textarea 
+        class="case-input" 
+        placeholder="请详细描述您的案情，例如：民间借贷纠纷，借款金额50万元，约定利息2%，对方逾期未还..."
+        value="{{caseDescription}}"
+        bindinput="onInput"
+        maxlength="1000"
+        auto-height
+      />
+      <view class="input-count">{{caseDescription.length}}/1000</view>
+    </view>
+
+    <view class="filter-area">
+      <view class="filter-title">案件类型（可选）</view>
+      <view class="filter-tags">
+        <view 
+          class="filter-tag {{selectedCategory === item.value ? 'selected' : ''}}"
+          wx:for="{{caseCategories}}" 
+          wx:key="value"
+          bindtap="selectCategory"
+          data-value="{{item.value}}"
+        >{{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="quick-cases">
+      <view class="quick-title">常见案例</view>
+      <view class="quick-list">
+        <view class="quick-item" wx:for="{{quickCases}}" wx:key="id" bindtap="useQuickCase" data-content="{{item.content}}">
+          <view class="quick-icon">{{item.icon}}</view>
+          <view class="quick-text">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-btn primary" bindtap="startSearch" wx:if="{{caseDescription}}">
+      开始智能检索
+    </view>
+  </view>
+
+  <view class="searching-section" wx:if="{{currentStep === 'searching'}}">
+    <view class="searching-content">
+      <view class="searching-animation">
+        <view class="searching-ring"></view>
+      </view>
+      <view class="searching-title">AI正在检索案例库...</view>
+      <view class="searching-step">{{currentSearchStep}}</view>
+      <view class="searching-hint">已检索 {{searchedCount}} 个案例</view>
+    </view>
+  </view>
+
+  <view class="result-section" wx:if="{{currentStep === 'result'}}">
+    <view class="result-header">
+      <view class="result-summary">
+        <view class="result-count">找到 <text class="highlight">{{caseList.length}}</text> 个相似案例</view>
+        <view class="result-filter" bindtap="toggleFilter">
+          <text>筛选</text>
+          <text class="filter-arrow">▼</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="case-list">
+      <view class="case-item" wx:for="{{caseList}}" wx:key="id" bindtap="viewCaseDetail" data-id="{{item.id}}">
+        <view class="case-title">{{item.title}}</view>
+        <view class="case-info">
+          <view class="case-court">{{item.court}}</view>
+          <view class="case-date">{{item.date}}</view>
+        </view>
+        <view class="case-summary">{{item.summary}}</view>
+        <view class="case-footer">
+          <view class="similarity">相似度 {{item.similarity}}%</view>
+          <view class="case-result {{item.result}}">{{item.resultText}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <view class="action-btn secondary" bindtap="reSearch">
+        <text>🔄</text>
+        <text>重新检索</text>
+      </view>
+      <view class="action-btn primary" bindtap="consultLawyer">
+        <text>👨‍⚖️</text>
+        <text>咨询律师</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail-section" wx:if="{{currentStep === 'detail'}}">
+    <view class="detail-header">
+      <view class="back-btn" bindtap="goBack">←</view>
+      <view class="detail-title">案例详情</view>
+    </view>
+
+    <view class="case-detail">
+      <view class="detail-title-section">
+        <view class="detail-case-title">{{currentCase.title}}</view>
+        <view class="detail-case-info">
+          <text>{{currentCase.court}}</text>
+          <text class="info-divider">|</text>
+          <text>{{currentCase.date}}</text>
+        </view>
+      </view>
+
+      <view class="detail-section">
+        <view class="section-label">案情简介</view>
+        <view class="section-content">{{currentCase.facts}}</view>
+      </view>
+
+      <view class="detail-section">
+        <view class="section-label">争议焦点</view>
+        <view class="section-content">{{currentCase.issues}}</view>
+      </view>
+
+      <view class="detail-section">
+        <view class="section-label">判决结果</view>
+        <view class="section-content">{{currentCase.judgment}}</view>
+      </view>
+
+      <view class="detail-section">
+        <view class="section-label">法律依据</view>
+        <view class="law-list">
+          <view class="law-item" wx:for="{{currentCase.laws}}" wx:key="id">
+            <view class="law-name">{{item.name}}</view>
+            <view class="law-content">{{item.content}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

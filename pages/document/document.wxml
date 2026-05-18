@@ -1,0 +1,96 @@
+<view class="container">
+  <view class="type-select" wx:if="{{currentStep === 'select'}}">
+    <view class="section-title">选择文书类型</view>
+    <view class="type-grid">
+      <view class="type-card" wx:for="{{documentTypes}}" wx:key="type" bindtap="selectType" data-type="{{item.type}}">
+        <view class="type-icon">{{item.icon}}</view>
+        <view class="type-name">{{item.name}}</view>
+        <view class="type-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="question-form" wx:if="{{currentStep === 'question'}}">
+    <view class="form-header">
+      <view class="back-btn" bindtap="goBack">
+        <text>←</text>
+      </view>
+      <view class="form-title">{{selectedType.name}}</view>
+      <view class="step-indicator">步骤 {{currentQuestion + 1}}/{{questions.length}}</view>
+    </view>
+
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{(currentQuestion + 1) / questions.length * 100}}%"></view>
+    </view>
+
+    <view class="question-card">
+      <view class="question-title">{{questions[currentQuestion].title}}</view>
+      <view class="question-desc" wx:if="{{questions[currentQuestion].desc}}">{{questions[currentQuestion].desc}}</view>
+      
+      <view class="answer-area">
+        <input 
+          wx:if="{{questions[currentQuestion].type === 'text'}}"
+          class="answer-input"
+          placeholder="{{questions[currentQuestion].placeholder}}"
+          value="{{answers[currentQuestion] || ''}}"
+          bindinput="onAnswerInput"
+        />
+        
+        <textarea 
+          wx:if="{{questions[currentQuestion].type === 'textarea'}}"
+          class="answer-textarea"
+          placeholder="{{questions[currentQuestion].placeholder}}"
+          value="{{answers[currentQuestion] || ''}}"
+          bindinput="onAnswerInput"
+          auto-height
+        />
+        
+        <view class="option-list" wx:if="{{questions[currentQuestion].type === 'select'}}">
+          <view 
+            class="option-item {{answers[currentQuestion] === option ? 'selected' : ''}}"
+            wx:for="{{questions[currentQuestion].options}}"
+            wx:key="*this"
+            bindtap="selectOption"
+            data-option="{{item}}"
+          >
+            <view class="option-radio"></view>
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-actions">
+      <view class="btn-prev" wx:if="{{currentQuestion > 0}}" bindtap="prevQuestion">上一步</view>
+      <view class="btn-next" wx:if="{{currentQuestion < questions.length - 1}}" bindtap="nextQuestion">下一步</view>
+      <view class="btn-generate" wx:if="{{currentQuestion === questions.length - 1}}" bindtap="generateDocument">生成文书</view>
+    </view>
+  </view>
+
+  <view class="result-page" wx:if="{{currentStep === 'result'}}">
+    <view class="result-header">
+      <view class="success-icon">✅</view>
+      <view class="result-title">文书生成成功</view>
+    </view>
+
+    <view class="document-preview">
+      <view class="preview-title">{{selectedType.name}}</view>
+      <view class="preview-content">{{generatedContent}}</view>
+    </view>
+
+    <view class="result-actions">
+      <view class="action-btn secondary" bindtap="regenerate">
+        <text>🔄</text>
+        <text>重新生成</text>
+      </view>
+      <view class="action-btn primary" bindtap="copyDocument">
+        <text>📋</text>
+        <text>复制内容</text>
+      </view>
+      <view class="action-btn primary" bindtap="downloadDocument">
+        <text>📥</text>
+        <text>下载文件</text>
+      </view>
+    </view>
+  </view>
+</view>

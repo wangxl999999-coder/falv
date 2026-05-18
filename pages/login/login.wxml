@@ -1,0 +1,96 @@
+<view class="container">
+  <view class="logo-section">
+    <view class="logo">⚖️</view>
+    <view class="app-name">AI法律助手</view>
+    <view class="app-slogan">专业、高效、便捷的法律服务</view>
+  </view>
+
+  <view class="login-section">
+    <view class="login-tabs">
+      <view class="tab-item {{loginType === 'wechat' ? 'active' : ''}}" bindtap="switchTab" data-type="wechat">
+        微信登录
+      </view>
+      <view class="tab-item {{loginType === 'phone' ? 'active' : ''}}" bindtap="switchTab" data-type="phone">
+        手机号登录
+      </view>
+    </view>
+
+    <view class="wechat-login" wx:if="{{loginType === 'wechat'}}">
+      <view class="wechat-avatar" wx:if="{{userInfo.avatarUrl}}">
+        <image src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+      <view class="wechat-avatar-placeholder" wx:else>
+        <text>👤</text>
+      </view>
+      <view class="wechat-nickname">{{userInfo.nickName || '点击获取头像昵称'}}</view>
+      
+      <button 
+        class="btn-wechat" 
+        open-type="getUserInfo" 
+        bindgetuserinfo="getUserInfo"
+        wx:if="{{!userInfo.nickName}}"
+      >
+        获取微信头像昵称
+      </button>
+      
+      <button 
+        class="btn-login" 
+        bindtap="wechatLogin"
+        wx:if="{{userInfo.nickName}}"
+      >
+        微信一键登录
+      </button>
+    </view>
+
+    <view class="phone-login" wx:if="{{loginType === 'phone'}}">
+      <view class="input-group">
+        <view class="input-label">手机号</view>
+        <input 
+          class="phone-input" 
+          type="number" 
+          placeholder="请输入手机号"
+          value="{{phoneNumber}}"
+          bindinput="onPhoneInput"
+          maxlength="11"
+        />
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">验证码</view>
+        <view class="code-input-wrapper">
+          <input 
+            class="code-input" 
+            type="number" 
+            placeholder="请输入验证码"
+            value="{{verifyCode}}"
+            bindinput="onCodeInput"
+            maxlength="6"
+          />
+          <view class="send-code-btn {{countdown > 0 ? 'disabled' : ''}}" bindtap="sendVerifyCode">
+            {{countdown > 0 ? countdown + 's' : '获取验证码'}}
+          </view>
+        </view>
+      </view>
+
+      <button class="btn-login" bindtap="phoneLogin">
+        登录
+      </button>
+
+      <view class="agreement">
+        <view class="checkbox {{agreed ? 'checked' : ''}}" bindtap="toggleAgreement">
+          <text wx:if="{{agreed}}">✓</text>
+        </view>
+        <text class="agreement-text">
+          我已阅读并同意
+          <text class="link" bindtap="viewAgreement">《用户协议》</text>
+          和
+          <text class="link" bindtap="viewPrivacy">《隐私政策》</text>
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footer-text">登录即表示您同意我们的服务条款和隐私政策</view>
+  </view>
+</view>

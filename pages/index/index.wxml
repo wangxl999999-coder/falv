@@ -1,0 +1,89 @@
+<view class="container">
+  <view class="header">
+    <view class="banner">
+      <image class="banner-img" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=law%20and%20justice%20concept%20with%20scales%20and%20gavel%20professional%20blue%20theme&image_size=landscape_16_9" mode="aspectFill"></image>
+      <view class="banner-text">
+        <view class="banner-title">AI法律助手</view>
+        <view class="banner-desc">24小时专业法律服务</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="action-grid">
+      <view class="action-item" bindtap="goToChat">
+        <view class="action-icon ai-chat">
+          <text class="iconfont">💬</text>
+        </view>
+        <view class="action-text">智能问答</view>
+      </view>
+      <view class="action-item" bindtap="goToDocument">
+        <view class="action-icon document">
+          <text class="iconfont">📄</text>
+        </view>
+        <view class="action-text">文书生成</view>
+      </view>
+      <view class="action-item" bindtap="goToContract">
+        <view class="action-icon contract">
+          <text class="iconfont">📋</text>
+        </view>
+        <view class="action-text">合同审查</view>
+      </view>
+      <view class="action-item" bindtap="goToCase">
+        <view class="action-icon case">
+          <text class="iconfont">⚖️</text>
+        </view>
+        <view class="action-text">类案检索</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">热门文书</view>
+      <view class="section-more" bindtap="goToDocument">查看更多 ></view>
+    </view>
+    <view class="document-list">
+      <view class="document-item" wx:for="{{hotDocuments}}" wx:key="id" bindtap="selectDocument" data-type="{{item.type}}">
+        <view class="doc-icon">{{item.icon}}</view>
+        <view class="doc-info">
+          <view class="doc-name">{{item.name}}</view>
+          <view class="doc-desc">{{item.desc}}</view>
+        </view>
+        <view class="doc-arrow">></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">推荐律师</view>
+      <view class="section-more" bindtap="goToLawyer">查看更多 ></view>
+    </view>
+    <scroll-view class="lawyer-scroll" scroll-x="true" show-scrollbar="false">
+      <view class="lawyer-list">
+        <view class="lawyer-card" wx:for="{{recommendLawyers}}" wx:key="id" bindtap="goToLawyerDetail" data-id="{{item.id}}">
+          <image class="lawyer-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="lawyer-name">{{item.name}}</view>
+          <view class="lawyer-title">{{item.title}}</view>
+          <view class="lawyer-specialty">{{item.specialty}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">法律资讯</view>
+    </view>
+    <view class="news-list">
+      <view class="news-item" wx:for="{{news}}" wx:key="id">
+        <image class="news-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="news-content">
+          <view class="news-title">{{item.title}}</view>
+          <view class="news-time">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

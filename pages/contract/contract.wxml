@@ -1,0 +1,123 @@
+<view class="container">
+  <view class="upload-section" wx:if="{{currentStep === 'upload'}}">
+    <view class="section-title">合同智能审查</view>
+    <view class="section-desc">AI智能识别合同风险，提供专业法律评估报告</view>
+
+    <view class="upload-area" bindtap="chooseFile">
+      <view class="upload-icon">📁</view>
+      <view class="upload-text">点击上传合同文件</view>
+      <view class="upload-hint">支持 PDF、Word、图片格式</view>
+    </view>
+
+    <view class="file-preview" wx:if="{{selectedFile}}">
+      <view class="file-info">
+        <view class="file-icon">📄</view>
+        <view class="file-detail">
+          <view class="file-name">{{selectedFile.name}}</view>
+          <view class="file-size">{{selectedFile.size}}</view>
+        </view>
+        <view class="file-remove" bindtap="removeFile">✕</view>
+      </view>
+    </view>
+
+    <view class="quick-tips">
+      <view class="tips-title">审查范围包括</view>
+      <view class="tips-list">
+        <view class="tip-item">
+          <text class="tip-icon">✓</text>
+          <text>条款完整性检查</text>
+        </view>
+        <view class="tip-item">
+          <text class="tip-icon">✓</text>
+          <text>法律风险识别</text>
+        </view>
+        <view class="tip-item">
+          <text class="tip-icon">✓</text>
+          <text>不公平条款提示</text>
+        </view>
+        <view class="tip-item">
+          <text class="tip-icon">✓</text>
+          <text>修改建议方案</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-btn primary" bindtap="startReview" wx:if="{{selectedFile}}">
+      开始智能审查
+    </view>
+  </view>
+
+  <view class="reviewing-section" wx:if="{{currentStep === 'reviewing'}}">
+    <view class="reviewing-content">
+      <view class="loading-animation">
+        <view class="loading-ring"></view>
+      </view>
+      <view class="reviewing-title">AI正在分析合同...</view>
+      <view class="reviewing-step">{{currentReviewStep}}</view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{reviewProgress}}%"></view>
+      </view>
+      <view class="progress-text">{{reviewProgress}}%</view>
+    </view>
+  </view>
+
+  <view class="result-section" wx:if="{{currentStep === 'result'}}">
+    <view class="result-header">
+      <view class="score-card">
+        <view class="score-value">{{reviewResult.score}}</view>
+        <view class="score-label">合同安全评分</view>
+        <view class="score-level {{reviewResult.level}}">{{reviewResult.levelText}}</view>
+      </view>
+    </view>
+
+    <view class="risk-summary">
+      <view class="summary-title">风险概览</view>
+      <view class="risk-stats">
+        <view class="stat-item high">
+          <view class="stat-value">{{reviewResult.highRiskCount}}</view>
+          <view class="stat-label">高风险</view>
+        </view>
+        <view class="stat-item medium">
+          <view class="stat-value">{{reviewResult.mediumRiskCount}}</view>
+          <view class="stat-label">中风险</view>
+        </view>
+        <view class="stat-item low">
+          <view class="stat-value">{{reviewResult.lowRiskCount}}</view>
+          <view class="stat-label">低风险</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="risk-details">
+      <view class="details-title">风险详情</view>
+      <view class="risk-list">
+        <view class="risk-item" wx:for="{{reviewResult.risks}}" wx:key="id">
+          <view class="risk-header">
+            <view class="risk-type {{item.level}}">{{item.levelText}}</view>
+            <view class="risk-category">{{item.category}}</view>
+          </view>
+          <view class="risk-desc">{{item.description}}</view>
+          <view class="risk-suggestion">
+            <view class="suggestion-title">修改建议：</view>
+            <view class="suggestion-text">{{item.suggestion}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <view class="action-btn secondary" bindtap="reUpload">
+        <text>🔄</text>
+        <text>重新上传</text>
+      </view>
+      <view class="action-btn primary" bindtap="downloadReport">
+        <text>📥</text>
+        <text>下载报告</text>
+      </view>
+      <view class="action-btn primary" bindtap="consultLawyer">
+        <text>👨‍⚖️</text>
+        <text>咨询律师</text>
+      </view>
+    </view>
+  </view>
+</view>

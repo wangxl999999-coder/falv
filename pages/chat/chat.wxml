@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="chat-header">
+    <view class="header-info">
+      <view class="ai-avatar">
+        <text class="ai-icon">🤖</text>
+      </view>
+      <view class="ai-status">
+        <view class="ai-name">AI法律顾问</view>
+        <view class="ai-online">
+          <view class="online-dot"></view>
+          <text>在线中</text>
+        </view>
+      </view>
+    </view>
+    <view class="header-actions">
+      <view class="action-btn" bindtap="clearChat">
+        <text>🗑️</text>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="chat-messages" scroll-y="true" scroll-into-view="{{scrollToView}}" scroll-with-animation="true">
+    <view class="message-item" wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}">
+      <view class="message {{item.role}}">
+        <view class="message-avatar" wx:if="{{item.role === 'assistant'}}">
+          <text class="avatar-icon">🤖</text>
+        </view>
+        <view class="message-content">
+          <view class="message-text">{{item.content}}</view>
+          <view class="message-time">{{item.time}}</view>
+          
+          <view class="message-actions" wx:if="{{item.role === 'assistant' && !item.isTyping}}">
+            <view class="action-item" bindtap="copyMessage" data-index="{{index}}">
+              <text>📋</text>
+              <text>复制</text>
+            </view>
+            <view class="action-item" bindtap="playAudio" data-index="{{index}}">
+              <text>🔊</text>
+              <text>播放</text>
+            </view>
+            <view class="action-item" bindtap="likeMessage" data-index="{{index}}">
+              <text>{{item.liked ? '👍' : '👍'}}</text>
+              <text>有用</text>
+            </view>
+          </view>
+        </view>
+        <view class="message-avatar" wx:if="{{item.role === 'user'}}">
+          <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="typing-indicator" wx:if="{{isTyping}}">
+      <view class="message assistant">
+        <view class="message-avatar">
+          <text class="avatar-icon">🤖</text>
+        </view>
+        <view class="message-content typing">
+          <view class="typing-dots">
+            <view class="dot"></view>
+            <view class="dot"></view>
+            <view class="dot"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="quick-questions" wx:if="{{messages.length === 0}}">
+    <view class="quick-title">热门问题</view>
+    <view class="quick-list">
+      <view class="quick-item" wx:for="{{quickQuestions}}" wx:key="id" bindtap="sendQuickQuestion" data-question="{{item.question}}">
+        <text class="quick-icon">{{item.icon}}</text>
+        <text class="quick-text">{{item.question}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="input-area">
+    <view class="input-wrapper">
+      <view class="voice-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording" catchtouchstart="startRecord" catchtouchend="stopRecord">
+        <text class="voice-icon">{{isRecording ? '🔴' : '🎤'}}</text>
+      </view>
+      <input 
+        class="chat-input" 
+        value="{{inputText}}" 
+        placeholder="输入您的法律问题..." 
+        bindinput="onInput"
+        confirm-type="send"
+        bindconfirm="sendMessage"
+        adjust-position="true"
+      />
+      <view class="send-btn {{inputText ? 'active' : ''}}" bindtap="sendMessage">
+        <text>发送</text>
+      </view>
+    </view>
+    
+    <view class="recording-tip" wx:if="{{isRecording}}">
+      <view class="recording-wave">
+        <view class="wave-bar" wx:for="{{[1,2,3,4,5]}}" wx:key="*this"></view>
+      </view>
+      <text>正在录音，松开结束</text>
+    </view>
+  </view>
+</view>

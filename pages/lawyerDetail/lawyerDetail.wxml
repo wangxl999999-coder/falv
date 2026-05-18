@@ -1,0 +1,95 @@
+<view class="container">
+  <view class="header">
+    <view class="header-bg"></view>
+    <view class="lawyer-profile">
+      <image class="lawyer-avatar" src="{{lawyer.avatar}}" mode="aspectFill"></image>
+      <view class="lawyer-basic">
+        <view class="lawyer-name">{{lawyer.name}}</view>
+        <view class="lawyer-title">{{lawyer.title}}</view>
+        <view class="lawyer-firm">{{lawyer.firm}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <view class="stat-item">
+      <view class="stat-value">{{lawyer.caseCount}}</view>
+      <view class="stat-label">案件数</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-value">{{lawyer.winRate}}%</view>
+      <view class="stat-label">胜诉率</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-value">{{lawyer.experience}}年</view>
+      <view class="stat-label">执业经验</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-value">{{lawyer.rating}}</view>
+      <view class="stat-label">评分</view>
+    </view>
+  </view>
+
+  <view class="info-section">
+    <view class="section-header">
+      <view class="section-title">擅长领域</view>
+    </view>
+    <view class="specialty-tags">
+      <view class="tag" wx:for="{{lawyer.tags}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="info-section">
+    <view class="section-header">
+      <view class="section-title">个人简介</view>
+    </view>
+    <view class="intro-content">{{lawyer.intro}}</view>
+  </view>
+
+  <view class="info-section">
+    <view class="section-header">
+      <view class="section-title">成功案例</view>
+      <view class="section-more">查看更多 ></view>
+    </view>
+    <view class="case-list">
+      <view class="case-item" wx:for="{{lawyer.cases}}" wx:key="id">
+        <view class="case-title">{{item.title}}</view>
+        <view class="case-result">{{item.result}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="info-section">
+    <view class="section-header">
+      <view class="section-title">用户评价</view>
+      <view class="section-more">查看全部 ></view>
+    </view>
+    <view class="review-list">
+      <view class="review-item" wx:for="{{lawyer.reviews}}" wx:key="id">
+        <view class="review-header">
+          <view class="reviewer-name">{{item.userName}}</view>
+          <view class="review-date">{{item.date}}</view>
+        </view>
+        <view class="review-rating">
+          <text wx:for="{{[1,2,3,4,5]}}" wx:key="*this">{{item <= item.rating ? '⭐' : '☆'}}</text>
+        </view>
+        <view class="review-content">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <view class="price-info">
+      <text class="price-label">咨询费</text>
+      <text class="price-value">¥{{lawyer.price}}</text>
+      <text class="price-unit">/30分钟</text>
+    </view>
+    <view class="action-buttons">
+      <view class="btn-chat" bindtap="startChat">文字咨询</view>
+      <view class="btn-video" bindtap="startVideo">视频咨询</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,413 @@
+.container {
+  min-height: 100vh;
+  padding: 30rpx;
+  background: #f5f7fa;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.section-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+}
+
+.upload-area {
+  background: #fff;
+  border: 4rpx dashed #1E88E5;
+  border-radius: 16rpx;
+  padding: 80rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.upload-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.upload-text {
+  font-size: 30rpx;
+  color: #1E88E5;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.file-preview {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+}
+
+.file-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: #e3f2fd;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.file-detail {
+  flex: 1;
+}
+
+.file-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 6rpx;
+  word-break: break-all;
+}
+
+.file-size {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.file-remove {
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #999;
+  background: #f5f7fa;
+  border-radius: 50%;
+}
+
+.quick-tips {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.tip-icon {
+  color: #52c41a;
+  margin-right: 12rpx;
+}
+
+.action-btn {
+  height: 96rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  gap: 12rpx;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+  color: #fff;
+}
+
+.action-btn.secondary {
+  background: #fff;
+  color: #666;
+  border: 2rpx solid #e0e0e0;
+}
+
+.reviewing-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.reviewing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.loading-animation {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+}
+
+.loading-ring {
+  width: 100%;
+  height: 100%;
+  border: 8rpx solid #e3f2fd;
+  border-top-color: #1E88E5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reviewing-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.reviewing-step {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.progress-bar {
+  width: 80%;
+  height: 12rpx;
+  background: #e0e0e0;
+  border-radius: 6rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1E88E5 0%, #1565C0 100%);
+  border-radius: 6rpx;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 28rpx;
+  color: #1E88E5;
+  font-weight: bold;
+}
+
+.result-section {
+  padding: 0;
+}
+
+.result-header {
+  background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+  margin: -30rpx -30rpx 30rpx;
+  padding: 60rpx 30rpx;
+  border-radius: 0 0 32rpx 32rpx;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.score-value {
+  font-size: 80rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.score-label {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 16rpx;
+}
+
+.score-level {
+  padding: 12rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.score-level.good {
+  background: rgba(82, 196, 26, 0.3);
+}
+
+.score-level.medium {
+  background: rgba(250, 173, 20, 0.3);
+}
+
+.score-level.poor {
+  background: rgba(255, 77, 79, 0.3);
+}
+
+.risk-summary {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.summary-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.risk-stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.stat-item.high .stat-value {
+  color: #ff4d4f;
+}
+
+.stat-item.medium .stat-value {
+  color: #faad14;
+}
+
+.stat-item.low .stat-value {
+  color: #52c41a;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.risk-details {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.details-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.risk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.risk-item {
+  background: #fafafa;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  gap: 16rpx;
+}
+
+.risk-type {
+  padding: 6rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.risk-type.high {
+  background: #fff1f0;
+  color: #ff4d4f;
+}
+
+.risk-type.medium {
+  background: #fffbe6;
+  color: #faad14;
+}
+
+.risk-type.low {
+  background: #f6ffed;
+  color: #52c41a;
+}
+
+.risk-category {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.risk-desc {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.risk-suggestion {
+  background: #e3f2fd;
+  border-radius: 8rpx;
+  padding: 16rpx;
+}
+
+.suggestion-title {
+  font-size: 24rpx;
+  color: #1E88E5;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.suggestion-text {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}

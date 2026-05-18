@@ -1,0 +1,99 @@
+<view class="container">
+  <view class="header">
+    <view class="header-bg"></view>
+    <view class="user-section" wx:if="{{isLogin}}" bindtap="goToEdit">
+      <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <view class="user-name">{{userInfo.nickName || '未登录'}}</view>
+        <view class="user-phone">{{userPhone || '点击完善个人信息'}}</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+    
+    <view class="login-prompt" wx:else bindtap="goToLogin">
+      <view class="login-avatar">
+        <text>👤</text>
+      </view>
+      <view class="login-text">
+        <view class="login-title">点击登录</view>
+        <view class="login-desc">登录享受更多服务</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+  </view>
+
+  <view class="stats-section" wx:if="{{isLogin}}">
+    <view class="stat-item" bindtap="goToRecord" data-type="chat">
+      <view class="stat-value">{{recordStats.chat}}</view>
+      <view class="stat-label">AI咨询</view>
+    </view>
+    <view class="stat-item" bindtap="goToRecord" data-type="document">
+      <view class="stat-value">{{recordStats.document}}</view>
+      <view class="stat-label">法律文书</view>
+    </view>
+    <view class="stat-item" bindtap="goToRecord" data-type="contract">
+      <view class="stat-value">{{recordStats.contract}}</view>
+      <view class="stat-label">合同审查</view>
+    </view>
+    <view class="stat-item" bindtap="goToRecord" data-type="consult">
+      <view class="stat-value">{{recordStats.consult}}</view>
+      <view class="stat-label">律师咨询</view>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToRecord" data-type="all">
+        <view class="menu-icon">📁</view>
+        <view class="menu-text">我的档案</view>
+        <view class="menu-arrow">›</view>
+      </view>
+      <view class="menu-item" bindtap="goToFavoriteLawyers">
+        <view class="menu-icon">⭐</view>
+        <view class="menu-text">收藏的律师</view>
+        <view class="menu-arrow">›</view>
+      </view>
+      <view class="menu-item" bindtap="goToConsultations">
+        <view class="menu-icon">📞</view>
+        <view class="menu-text">我的咨询</view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToWallet">
+        <view class="menu-icon">💰</view>
+        <view class="menu-text">我的钱包</view>
+        <view class="menu-arrow">›</view>
+      </view>
+      <view class="menu-item" bindtap="goToCoupon">
+        <view class="menu-icon">🎫</view>
+        <view class="menu-text">优惠券</view>
+        <view class="menu-badge">3张可用</view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToSettings">
+        <view class="menu-icon">⚙️</view>
+        <view class="menu-text">设置</view>
+        <view class="menu-arrow">›</view>
+      </view>
+      <view class="menu-item" bindtap="goToFeedback">
+        <view class="menu-icon">💬</view>
+        <view class="menu-text">意见反馈</view>
+        <view class="menu-arrow">›</view>
+      </view>
+      <view class="menu-item" bindtap="goToAbout">
+        <view class="menu-icon">ℹ️</view>
+        <view class="menu-text">关于我们</view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="logout-section" wx:if="{{isLogin}}">
+    <view class="logout-btn" bindtap="handleLogout">退出登录</view>
+  </view>
+</view>
