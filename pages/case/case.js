@@ -19,7 +19,7 @@ Page({
       { id: 1, icon: '💰', title: '民间借贷纠纷', content: '借款50万元，约定月利率2%，对方逾期未还本金和利息' },
       { id: 2, icon: '💔', title: '离婚财产分割', content: '夫妻双方感情破裂，婚后购买房产一套，存款100万元，如何分割' },
       { id: 3, icon: '💼', title: '劳动仲裁申请', content: '公司拖欠工资3个月，未缴纳社保，准备申请劳动仲裁' },
-      { id: 4, icon: '🚗', title: '交通事故赔偿',': '对方全责但不配合理赔处理'}
+      { id: 4, icon: '🚗', title: '交通事故赔偿', content: '对方全责但不配合理赔处理'}
     ],
     currentSearchStep: '正在分析案情特征...',
     searchedCount: 0,

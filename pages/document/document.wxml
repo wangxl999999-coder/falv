@@ -47,7 +47,7 @@
         
         <view class="option-list" wx:if="{{questions[currentQuestion].type === 'select'}}">
           <view 
-            class="option-item {{answers[currentQuestion] === option ? 'selected' : ''}}"
+            class="option-item {{answers[currentQuestion] === item ? 'selected' : ''}}"
             wx:for="{{questions[currentQuestion].options}}"
             wx:key="*this"
             bindtap="selectOption"
