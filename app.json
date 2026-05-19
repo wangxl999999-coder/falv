@@ -58,7 +58,7 @@
       "desc": "需要使用你的麦克风进行语音咨询"
     }
   },
-  "requiredPrivateInfos": ["getPhoneNumber", "chooseMessageFile"],
+
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "lazyCodeLoading": "requiredComponents"
